@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77949830-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag()
+		{
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-77949830-4');
+	</script>
+
+	<!-- Basic -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Niko | Scroll Tracker</title>
+	<meta name="description" content="D3 Tracking Plot, Based on Mike Bostock">
+	<meta name="keywords" content="D3.js, dataviz, visualization, data, graphics, interactive">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Load Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic' rel='stylesheet'>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../css/glitche-basic.css" />
+	<link rel="stylesheet" href="../css/glitche-layout.css" />
+	<link rel="stylesheet" href="../css/ionicons.css" />
+	<link rel="stylesheet" href="../css/magnific-popup.css" />
+	<link rel="stylesheet" href="../css/animate.css" />
+	<link rel="stylesheet" href="../css/badge-style.css">
+
+	<!-- Highlight.js -->
+	<link rel="stylesheet" href="../css/highlight/tomorrow-night.css">
+	<script src="../js/highlight.pack.js"></script>
+	<script src="../js/highlightjs-badge.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	</script>
+
+
+	<!-- CSS for Visualization -->
+	<link rel="stylesheet" href="../css/blog/scroll-tracker.css" />
+
+	<!--
+		Template RTL
+	-->
+	<!--<link rel="stylesheet" href="css/rtl.css" />-->
+
+	<!--
+		Template Colors
+	-->
+	<!-- <link rel="stylesheet" href="../css/template-colors/orange.css" /> -->
+	<link rel="stylesheet" href="css/template-colors/blue.css" />
+	<!--<link rel="stylesheet" href="css/template-colors/green.css" />-->
+	<!--<link rel="stylesheet" href="css/template-colors/pink.css" />-->
+	<!--<link rel="stylesheet" href="css/template-colors/purple.css" />-->
+	<!-- <link rel="stylesheet" href="css/template-colors/red.css" /> -->
+
+	<!--
+		Template Dark
+	-->
+	<link rel="stylesheet" href="../css/template-dark/dark.css" />
+
+
+	<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="../images/favicons/favicon.ico">
+
+</head>
+
+<body>
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="centrize full-width">
+			<div class="vertical-center">
+				<div class="pre-inner">
+					<div class="load typing-load">
+						<p>loading...</p>
+					</div>
+					<span class="typed-load"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Header -->
+		<header>
+			<div class="head-top">
+				<a href="#" class="menu-btn"><span></span></a>
+				<div class="top-menu">
+					<ul>
+						<li><a href="../resume.html" class="lnk">About</a></li>
+						<li><a href="../portfolio.html" class="lnk">Portfolio</a></li>
+						<li class="active"><a href="../blog.html" class="lnk">Data Blog</a></li>
+						<li><a href="../contact.html" class="btn">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Started -->
+			<div class="section started">
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<div class="date">19 November 2020</div>
+							<div class="h-title blog_title">A Scroll-Tracking Plot</div>
+							<div class="h-subtitle typing-bread">
+								<p><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a></p>
+							</div>
+							<span class="typed-bread"></span>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="mouse_btn"><span class="ion ion-mouse"></span></a>
+			</div>
+
+			<!-- Blog -->
+			<div class="section blog">
+				<div class="content">
+					<div class="single-post-text">
+						<div id="chart"></div>
+						<p>
+							Scroll with your mouse (or finger) and watch the line plot update in real time. This scroll tracker was made with D3.js version 5, and is adapted from original code by <a href="https://bost.ocks.org/mike/" target="_blank">Mike
+								Bostock</a>, which I <a href="https://bost.ocks.org/mike/path/" target="_blank">found online</a>, inspected, and then recreated.
+						</p>
+					</div>
+
+					<pre><code class="javascript">
+async function drawLines() {
+
+  var n = 200,
+	duration = 395,
+	now = new Date(Date.now() - duration),
+	count = 0,
+	data = d3.range(n).map(function () {
+		return 0;
+	});
+
+  var margin = { top: 20, right: 20, bottom: 20, left: 40 };
+
+  var width = 960;
+  var height = 500;
+
+  var svg = d3
+  	.select("#chart")
+  	.append("svg")
+  	.attr("preserveAspectRatio", "xMinYMin meet")
+  	.attr("viewBox", "-20 -20 1000 750")
+  	.style("padding", 5)
+  	.style("margin", 5);
+
+  var g = svg
+  	.append("g")
+  	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var x = d3
+  	.scaleTime()
+  	.domain([now - (n - 2) * duration, now - duration])
+  	.range([0, width]);
+
+  var y = d3.scaleLinear().range([height, 0]);
+
+  var line = d3
+  	.line()
+  	.curve(d3.curveBasis)
+  	.x(function (d, i) {
+  		return x(now - (n - 1 - i) * duration);
+  	})
+  	.y(function (d, i) {
+  		return y(d);
+  	});
+
+  svg
+  	.attr("width", width + margin.left + margin.right)
+  	.attr("height", height + margin.top + margin.bottom)
+  	.style("margin-left", -margin.left + "px")
+  	.append("g")
+  	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg
+  	.append("defs")
+  	.append("clipPath")
+  	.attr("id", "clip")
+  	.append("rect")
+  	.attr("width", width)
+  	.attr("height", height);
+
+  var axis = svg
+  	.append("g")
+  	.attr("class", "x axis")
+  	.attr("transform", "translate(0," + height + ")")
+  	.call(d3.axisBottom(x));
+
+  var path = svg
+  	.append("g")
+  	.attr("clip-path", "url(#clip)")
+  	.append("path")
+  	.datum(data)
+  	.attr("class", "line")
+  	.transition()
+  	.duration(405)
+  	.ease(d3.easeLinear)
+  	.on("start", tick);
+
+  d3.select(window).on("scroll", function () {
+  	++count;
+  });
+
+  function tick() {
+  	now = new Date();
+  	x.domain([now - (n - 2) * duration, now - duration]);
+  	y.domain([0, d3.max(data)]);
+
+  	data.push(Math.min(70, count));
+  	count = 0;
+
+  	d3.select(this).attr("d", line).attr("transform", null);
+
+  	d3
+  		.active(this)
+  		.attr("transform", "translate(" + x(now - (n - 1) * duration) + ")")
+  		.transition()
+  		.on("start", tick);
+
+  	axis.transition().duration(750).ease(d3.easeLinear).call(d3.axisBottom(x));
+
+  	data.shift();
+  }
+
+}
+drawLines()
+					</code></pre>
+
+					<pre><code class="css">
+.line {
+	fill: none;
+	stroke: #bbb;
+	stroke-width: 1.5px;
+}
+					</code>
+					</pre>
+
+					<script>
+						setTimeout(function()
+						{
+							var pres = document.querySelectorAll("pre>code");
+							for (var i = 0; i < pres.length; i++)
+							{
+								hljs.highlightBlock(pres[i]);
+							}
+							var options = {
+								contentSelector: ".container",
+								// Delay in ms used for `setTimeout` before badging is applied
+								// Use if you need to time highlighting and badge application
+								// since the badges need to be applied afterwards.
+								// 0 - direct execution (ie. you handle timing
+								loadDelay: 0,
+
+								// CSS class(es) used to render the copy icon.
+								copyIconClass: "fa fa-copy",
+								// CSS class(es) used to render the done icon.
+								checkIconClass: "fa fa-check text-success",
+
+								// hook to allow modifying the text before it's pasted
+								onBeforeTextCopied: function(text, codeElement)
+								{
+									return text; //  you can fix up the text here
+								}
+							};
+							window.highlightJsBadge(options);
+						}, 10);
+					</script>
+
+
+					<!-- <div class="post-comments">
+						<div class="title">
+							<div class="title_inner">4 COMMENTS</div>
+						</div>
+						<ul class="comments">
+							<li class="post-comment">
+								<div class="image">
+									<img src="images/man1.jpg" alt="">
+								</div>
+								<div class="desc">
+									<div class="name">Jesse Pitman</div>
+									<p>
+										An has alterum nominavi. Nam at elitr veritus voluptaria. Cu eum regione tacimates vituperatoribus, ut mutat delenit est.
+									</p>
+								</div>
+							</li>
+							<li class="post-comment">
+								<div class="image">
+									<img src="images/man1.jpg" alt="">
+								</div>
+								<div class="desc">
+									<div class="name">John Doe</div>
+									<p>
+										An has alterum nominavi. Nam at elitr veritus voluptaria. Cu eum regione tacimates vituperatoribus, ut mutat delenit est.
+									</p>
+								</div>
+							</li>
+							<li class="post-comment">
+								<div class="image">
+									<img src="images/man1.jpg" alt="">
+								</div>
+								<div class="desc">
+									<div class="name">James Collins</div>
+									<p>
+										An has alterum nominavi. Nam at elitr veritus voluptaria. Cu eum regione tacimates vituperatoribus, ut mutat delenit est.
+									</p>
+								</div>
+							</li>
+							<li class="post-comment">
+								<div class="image">
+									<img src="images/man1.jpg" alt="">
+								</div>
+								<div class="desc">
+									<div class="name">James Ferguson</div>
+									<p>
+										An has alterum nominavi. Nam at elitr veritus voluptaria. Cu eum regione tacimates vituperatoribus, ut mutat delenit est.
+									</p>
+								</div>
+							</li>
+						</ul>
+						<div class="form-comment">
+							<div class="title">
+								<div class="title_inner">Write a comment</div>
+							</div>
+							<form id="comment_form" method="post">
+								<div class="group-val">
+									<input type="text" name="name" placeholder="Name" />
+								</div>
+								<div class="group-val">
+									<input type="text" name="email" placeholder="Email" />
+								</div>
+								<div class="group-val ct-gr">
+									<textarea name="message" placeholder="Comment"></textarea>
+								</div>
+								<a href="#" class="btn fill" onclick="$('#comment_form').submit(); return false;" data-text="Add Comment">Add Comment</a>
+							</form>
+						</div>
+					</div> -->
+					<div class="clear"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="soc">
+				<a target="_blank" href="https://twitter.com/NikoMcCarty"><span class="ion ion-social-twitter"></span></a>
+				<a target="_blank" href="https://github.com/nikomc"><span class="ion ion-social-github"></span></a>
+				<a target="_blank" href="https://codepen.io/nikomccarty"><span class="ion ion-social-codepen-outline"></span></a>
+				<a target="_blank" href="https://www.linkedin.com/in/nsmccarty/"><span class="ion ion-social-linkedin"></span></a>
+			</div>
+			<div class="copy">© 2020 Niko &#9829;. All rights reserved.</div>
+			<div class="clr"></div>
+		</footer>
+
+		<!-- Lines -->
+		<!--
+		<div class="line left"></div>
+		<div class="line right"></div> -->
+		<div class="line top"></div>
+		<div class="line bottom"></div>
+
+	</div>
+
+	<!-- jQuery Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.validate.js"></script>
+	<script src="../js/typed.js"></script>
+	<script src="../js/magnific-popup.js"></script>
+	<script src="../js/imagesloaded.pkgd.js"></script>
+	<script src="../js/isotope.pkgd.js"></script>
+
+	<!-- Main Scripts -->
+	<script src="../js/glitche-scripts.js"></script>
+
+
+
+	<!-- D3 Scripts -->
+	<script src="../js/d3.min.js"></script>
+
+	<!-- Visualization Scripts -->
+	<script src="../js/blog/scroll-tracker.js"></script>
+
+
+</body>
+
+</html>
