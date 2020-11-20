@@ -89,17 +89,13 @@ h6,
 .post-comments .post-comment .desc span.comment-reply,
 table th,
 p strong,
-footer .soc .ion,
+footer .soc a .ion,
 a.btn,
 .btn,
 .skills ul li .name,
 .box-items .box-item .desc .name,
 .popup-box .desc h4 {
 	color: #f0f0f0;
-}
-
-a {
-	color: #f26b38;
 }
 
 .container,
