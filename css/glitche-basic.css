@@ -83,7 +83,7 @@ body.loaded .section {
 .container .line {
 	content: '';
 	position: fixed;
-	background: #f26b38;
+	background: #1d1f21;
 	z-index: 105;
 }
 
