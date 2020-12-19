@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77949830-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag()
+		{
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-77949830-4');
+	</script>
+
+	<!-- Basic -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Niko | 30 Days of D3 #1</title>
+	<meta name="description" content="30 Days of D3 Challenge by Niko McCarty">
+	<meta name="keywords" content="D3.js, dataviz, visualization, data, graphics, interactive">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Load Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic' rel='stylesheet'>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../css/glitche-basic.css" />
+	<link rel="stylesheet" href="../css/glitche-layout.css" />
+	<link rel="stylesheet" href="../css/ionicons.css" />
+	<link rel="stylesheet" href="../css/magnific-popup.css" />
+	<link rel="stylesheet" href="../css/animate.css" />
+	<link rel="stylesheet" href="../css/badge-style.css">
+	<link rel="stylesheet" href="../css/blog/blog-style.css">
+
+	<!-- Highlight.js -->
+	<link rel="stylesheet" href="../css/highlight/tomorrow-night.css">
+	<script src="../js/highlight.pack.js"></script>
+	<script src="../js/highlightjs-badge.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	</script>
+
+
+	<!-- CSS for Specific Blog -->
+	<link rel="stylesheet" href="../css/blog/thirty-days-d3-one.css" />
+
+	<!--
+		Template Colors
+	-->
+	<link rel="stylesheet" href="css/template-colors/blue.css" />
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="../images/favicons/favicon.ico">
+
+</head>
+
+<body>
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="centrize full-width">
+			<div class="vertical-center">
+				<div class="pre-inner">
+					<div class="load typing-load">
+						<p>loading...</p>
+					</div>
+					<span class="typed-load"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Header -->
+		<header>
+			<div class="head-top">
+				<a href="#" class="menu-btn"><span></span></a>
+				<div class="top-menu">
+					<ul>
+						<li><a href="../resume.html" class="lnk">About</a></li>
+						<li><a href="../portfolio.html" class="lnk">Portfolio</a></li>
+						<li class="active"><a href="../blog.html" class="lnk">Data Blog</a></li>
+						<li><a href="../synbio.html" class="lnk">#SynBio News</a></li>
+						<li><a href="../contact.html" class="btn">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Started -->
+			<div class="section started">
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<div class="date">18 December 2020</div>
+							<div class="h-title blog_title">30 Days of D3: Part One</div>
+							<div class="h-subtitle typing-bread">
+								<p><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a></p>
+							</div>
+							<span class="typed-bread"></span>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="mouse_btn"><span class="ion ion-mouse"></span></a>
+			</div>
+
+			<!-- Blog -->
+			<div class="section blog">
+				<div class="content">
+					<div class="single-post-text">
+
+						<h2>Day One</h2>
+						
+						<p>School work has dismantled all the plans I once had to religiously practice D3.js. Data visualization has been an obsession of mine for the last two years, but writing and, before that, research, have scuttled my plans to dive deeply into the topic.
+						   This winter, while sitting at home in my New York apartment, I've decided to try, again, to make a concerted effort to practice D3.js on a daily basis. That practice is being done in (daily) coordination with Python and web scraping learning; the goal is to
+						   become really well-versed in Python for data cleaning, web scraping, and then D3.js for visualization.
+						</p>
+			
+						<p>Every day, for the next 30 days, I will update this website. This is part one; it will contain the first ten days of data visualizations. Each day's post will grow in complexity; annotations will emerge, as will more complex color scales and chart types. 
+							All visualizations are made with D3.js, and many of the visuals are adapted directly from 
+							Amelia Wattenberger's <a href="https://www.newline.co/fullstack-d3" target="_blank">excellent book</a> on the topic.
+						</p>
+
+						<div id="wrapper-one"></div>
+
+						<p>Now, for day one: a simple scatter plot. The colors grow darker with each successive day of weather (so that the last day of December is the darkest dot, and the first day of the year, January 1, is the lightest). The simplicity of this graph underlies some real complexity, at least in terms of how the D3.js library works.
+							For one, getting it to appear correctly on mobile devices required that I implement the "viewBox" attribute when setting up the wrapper of my visualization. You can view (and edit) all of my code in the CodePen embed, below.
+						</p>
+
+						<p class="codepen" data-height="550" data-theme-id="light" data-default-tab="js" data-user="nikomccarty" data-slug-hash="abmwvBW" data-preview="true" data-editable="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="30 Days of D3: Scatter Plot">
+							<span>See the Pen <a href="https://codepen.io/nikomccarty/pen/abmwvBW">
+							30 Days of D3: Scatter Plot</a> by Niko McCaarty  (<a href="https://codepen.io/nikomccarty">@nikomccarty</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+						<p>Finally, with the guiding principles of <a href="https://www.edwardtufte.com/tufte/books_vdqi" target="_blank">Edward Tufte's book</a>, and to continue in the spirit of Charles Joseph Minard, I feel it necessary to very clearly state where my data came from, how I obtained it, and to explain any visual elements which might be confusing to viewers.
+							This dataset was obtained directly from Amelia Wattenberger's course. It is the daily weather from every day in New York City, in 2018, as distributed from the <a href="https://darksky.net/forecast/40.7127,-74.0059/us12/en" target="_blank">DarkSky.net API</a>. The minimum temperature for each day is plotted on the x-axis, while the maximum temperature for each day is plotted
+							on the y-axis. While one might expect a relatively straight line to emerge (which is indeed what we see), denoting that temperatures remain in a relatively narrow range in any given 24 hour period, there are some interesting outliers in the dataset. 
+						</p>
+						<p>The color of each dot represents a date of year; lighter colors are nearer to January 1, 2018, while darker colors 
+							are nearer to December 31, 2018. A more intuitive color scale might be "circular"; that is, start and end with the same light color, with a dark color to represent the hot months (May-August or so), since January 1 and December 31 are very near to each other in reality, but appear very different in the chart. In future days of charts, I will expand upon this first chart and make 
+							it more intuitive and engaging to explore.</p>
+
+												
+						
+						
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="soc">
+				<a target="_blank" href="https://twitter.com/NikoMcCarty"><span class="ion ion-social-twitter"></span></a>
+				<a target="_blank" href="https://github.com/nikomc"><span class="ion ion-social-github"></span></a>
+				<a target="_blank" href="https://codepen.io/nikomccarty"><span class="ion ion-social-codepen-outline"></span></a>
+				<a target="_blank" href="https://www.linkedin.com/in/nsmccarty/"><span class="ion ion-social-linkedin"></span></a>
+			</div>
+			<div class="copy">© 2020 Niko &#9829;. All rights reserved.</div>
+			<div class="clr"></div>
+		</footer>
+
+		<!-- Lines -->
+		<!--
+		<div class="line left"></div>
+		<div class="line right"></div> -->
+		<div class="line top"></div>
+		<div class="line bottom"></div>
+
+	</div>
+
+	<!-- jQuery Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.validate.js"></script>
+	<script src="../js/typed.js"></script>
+	<script src="../js/magnific-popup.js"></script>
+	<script src="../js/imagesloaded.pkgd.js"></script>
+	<script src="../js/isotope.pkgd.js"></script>
+
+	<!-- Main Scripts -->
+	<script src="../js/glitche-scripts.js"></script>
+
+
+
+	<!-- D3 Scripts -->
+	<script src="../js/d3.min.js"></script>
+
+	<!-- Visualization Scripts -->
+	<script src="../js/blog/thirty-days-d3-one.js"></script>
+
+
+</body>
+
+</html>
