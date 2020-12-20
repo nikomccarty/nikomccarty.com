@@ -3,3 +3,8 @@
 	stroke: #bbb;
 	stroke-width: 1.5px;
 }
+
+.lunacyPrice {
+	fill: steelblue;
+	opacity: 0.2;
+}
