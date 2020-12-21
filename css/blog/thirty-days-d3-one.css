@@ -8,3 +8,8 @@
 	fill: steelblue;
 	opacity: 0.2;
 }
+
+.potter_equiv {
+	stroke: rgb(138, 47, 47);
+	stroke-width: 2px;
+}
