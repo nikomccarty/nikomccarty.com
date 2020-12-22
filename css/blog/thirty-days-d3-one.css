@@ -13,3 +13,14 @@
 	stroke: rgb(138, 47, 47);
 	stroke-width: 2px;
 }
+
+.symbols {
+    stroke: black;
+    stroke-width: 0.5px;
+}
+
+.grid-lines {
+    stroke-width: 0.2;
+    stroke: black;
+    stroke-opacity: 0.8;
+}
