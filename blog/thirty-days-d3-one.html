@@ -19,7 +19,7 @@
 
 	<!-- Basic -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Niko | 30 Days of D3 #1</title>
+	<title>Niko | 30 Days of D3</title>
 	<meta name="description" content="30 Days of D3 Challenge by Niko McCarty">
 	<meta name="keywords" content="D3.js, dataviz, visualization, data, graphics, interactive">
 
@@ -102,8 +102,8 @@
 				<div class="centrize full-width">
 					<div class="vertical-center">
 						<div class="started-content">
-							<div class="date">18 December 2020</div>
-							<div class="h-title blog_title">30 Days of D3: Part One</div>
+							<div class="date">20 December 2020</div>
+							<div class="h-title blog_title">30 Days of D3</div>
 							<div class="h-subtitle typing-bread">
 								<p><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a></p>
 							</div>
@@ -119,86 +119,24 @@
 				<div class="content">
 					<div class="single-post-text">
 
-						<h2>Day Five</h2>
+						<h2>A 30 Day Challenge</h2>
+
+						<p>School work has dismantled all the plans I once had to religiously practice D3.js. Data visualization has been an obsession of mine for the last two years, but writing and, before that, research, have scuttled my plans to dive deeply into the topic.
+							This winter, while sitting at home in my New York apartment, I've decided to try, again, to make a concerted effort to practice D3.js on a daily basis. That practice is being done in (daily) coordination with Python and web scraping learning; the goal is to
+							become really well-versed in Python for data cleaning, web scraping, and then D3.js for visualization.
+						 </p>
+			 
+						 <p>Every day, for the next 30 days, I will create a chart with D3.js. Each day's post will grow in complexity; annotations will emerge, as will more complex color scales and chart types. 
+							 All visualizations are made with D3.js, and many of the visuals are adapted directly from 
+							 Amelia Wattenberger's <a href="https://www.newline.co/fullstack-d3" target="_blank">excellent book</a> on the topic.
+						 </p>
 						
 						<p>I wrote my first code in D3 maybe 7 or 8 months ago, but my progress has been off and on. Throughout this time, I have always been aware of <a href="https://observablehq.com/" target="_blank">Observable.com</a>, but I never really understood how it works. Observable is kind of like a Jupyter Notebook for JavaScript, but I had trouble understanding its quirks. Still, many of the programmers that I follow on Twitter (like <a href="https://twitter.com/sxywu?lang=en" target="_blank">Shirley Wu</a> and <a href="https://twitter.com/Wattenberger" target="_blank">Amelia Wattenberger</a>) have published notebooks on Observable in the past. I decided, finally, to overcome my apprehension, fight through the Observable learning curve, and begin to build data visualizations on that website. I think it might be a useful tool for my coding, and there are LOADS of great data visualization examples on there.</p>
 
-						<p>So, rather than spend today learning new D3 methods, I decided to start recreating my data visualizations from this challenge thus far (which are written in standalone HTML, CSS, and JavaScript files) on Observable. You can visit <a href="https://observablehq.com/@nikomccarty" target="_blank">my profile here</a>.</p>
+						<p>I decided to start creating my data visualizations on Observable; it seems like a great way to learn both D3.js and become familiar with the quirks of that website simultaneously. You can visit <a href="https://observablehq.com/@nikomccarty" target="_blank">my profile here</a> to see my chart from every day of this challenge. Onwards!</p>
 						
-						<p>Henceforth, I'd like to prototype / build my visualizations on Observable, and then port that code to my website, here. Look out for that starting tomorrow!</p>
-
-						<h2>Day Four</h2>
+				
 						
-						<p>Today was a long day. I decided that, to really learn D3 at a decent pace, I would need to make multiple "simple" charts each day, for the next few days, so that I can begin prototyping the fun stuff, like interactions, event listeners, and so forth. At some point, I also need to go back to React and keep learning that / learn how to mix React with D3.js</p>
-
-						<p>So, anyway, today I made two different, very simple charts. The first chart, using the famous <a href="https://archive.ics.uci.edu/ml/datasets/iris" target="_blank">iris dataset</a> contains, for three species of flower, the sepal and petal length and widths for multiple different plants. I plotted this data as a scatterplot, with well-formatted axes. I also represent each flower species with a unique color and a unique symbol. Creating this scatterplot required that I learn D3 tick formatting methods and how to use D3 symbols. I also learned how to make a grid with D3.</p>
-
-						<div id="wrapper-scatter-symbols"></div>
-
-						<p>The second chart is a simple bar chart, which displays the frequency of usage for each letter in the English alphabet. This example is adapted directly from <a href="https://observablehq.com/@d3/bar-chart" target="_blank">Mike Bostock's example</a> on Observable. All I really had to do was pull the dataset (which is attached as a file at the hyperlinked URL) and then format Bostock's code for vanilla JavaScript.</p>
-
-
-						<p>I am also continuing through my learning of the Wattenberger book, but I don't want to always post those examples because I'm not sure of the code's copyright. Tomorrow, I will continue with more "simple" charts, and will also be migrating my code prototyping to Observable, which I have put off learning for too long.</p>
-
-						<h2>Day Three</h2>
-						
-						<p>Today, I saw a <a href="https://i.redd.it/zxgvk2ri8d661.jpg" target="_blank">chart</a> on Reddit that shows, for each Harry Potter character, their on-screen time compared to book mentions. Presented as a scatterplot, with a line plotted at a 45 degree angle, it shows which characters are over or underrepresented in the films.
-						</p>
-
-						<p>I decided to (very crudely) recreate the chart, by collecting data from <a href="https://www.jetpunk.com/user-quizzes/69506/top-100-harry-potter-characters-by-mention" target="_blank">JetPunk for book mentions</a> and from <a href="https://www.sporcle.com/games/AbeyJ/harry-potter-total-series-screen-time/results" target="_blank">Sporcle</a> for on-screen time of each character.</p>
-			
-						<p>Obviously, there's a lot of things I haven't yet practiced - annotations, coloring dots based on their position above or below the line, and cleaner legends are all things that I plan to learn very soon. I'd also like to improve this chart so that annotations and values appear on mouseover. With the current chart, there's no way to know which dot goes with which character! Totally lame! But I am getting better every day.</p>
-
-						<div id="wrapper-three"></div>
-
-						<h2>Day Two</h2>
-						
-						<p>I know, I know ... starting with a scatterplot on day one is totally lame. Line charts are probably even less interesting. But here it is, a line chart of Bitcoin's value over the last 365 days.
-						</p>
-			
-						<p>Data in this case was taken from <a href="https://finance.yahoo.com/quote/BTC-USD/history/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAADMdeqeLEEEIzPS5z19JhIeOrOtlTgBsvdOP8W0UyZn8l_oikXfBXi0XHmgxOObHSPyTYGefEBlIJ3TUumsULz2piWWNZ26VPSnzvS8tCyKR_B4YIF3_sHEeKeCJK4wHnSIoUsODfsfBn_uCCLbBcG9uKvGy3oWzmNJqr3z2UnGe" target="_blank">Yahoo's Finance</a> page on Bitcoin (Historical Data for last 365 days, exported as CSV file).
-						</p>
-
-						<div id="wrapper-two"></div>
-
-						<p>The shaded region represents times when Bitcoin's value has been <i>greater</i> than 15,000 USD per bitcoin. The color of the line and other elements are arbitrary. In an effort to save space, I won't like to my CodePen every time. But you can view the code for all pens at <a href="https://codepen.io/nikomccarty" target="_blank">my profile</a>.
-						</p>
-
-						<iframe width="100%" height="583" frameborder="0"
-  src="https://observablehq.com/embed/@nikomccarty/30-days-of-code-day-2-line-chart?cell=chart"></iframe>
-
-						<h2>Day One</h2>
-						
-						<p>School work has dismantled all the plans I once had to religiously practice D3.js. Data visualization has been an obsession of mine for the last two years, but writing and, before that, research, have scuttled my plans to dive deeply into the topic.
-						   This winter, while sitting at home in my New York apartment, I've decided to try, again, to make a concerted effort to practice D3.js on a daily basis. That practice is being done in (daily) coordination with Python and web scraping learning; the goal is to
-						   become really well-versed in Python for data cleaning, web scraping, and then D3.js for visualization.
-						</p>
-			
-						<p>Every day, for the next 30 days, I will update this website. This is part one; it will contain the first ten days of data visualizations. Each day's post will grow in complexity; annotations will emerge, as will more complex color scales and chart types. 
-							All visualizations are made with D3.js, and many of the visuals are adapted directly from 
-							Amelia Wattenberger's <a href="https://www.newline.co/fullstack-d3" target="_blank">excellent book</a> on the topic.
-						</p>
-
-						<div id="wrapper-one"></div>
-
-						<p>Now, for day one: a simple scatter plot. The colors grow darker with each successive day of weather (so that the last day of December is the darkest dot, and the first day of the year, January 1, is the lightest). The simplicity of this graph underlies some real complexity, at least in terms of how the D3.js library works.
-							For one, getting it to appear correctly on mobile devices required that I implement the "viewBox" attribute when setting up the wrapper of my visualization. You can view (and edit) all of my code in the CodePen embed, below.
-						</p>
-
-						<p class="codepen" data-height="550" data-theme-id="light" data-default-tab="js" data-user="nikomccarty" data-slug-hash="abmwvBW" data-preview="true" data-editable="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="30 Days of D3: Scatter Plot">
-							<span>See the Pen <a href="https://codepen.io/nikomccarty/pen/abmwvBW">
-							30 Days of D3: Scatter Plot</a> by Niko McCaarty  (<a href="https://codepen.io/nikomccarty">@nikomccarty</a>)
-							on <a href="https://codepen.io">CodePen</a>.</span>
-						  </p>
-						<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-						<p>Finally, with the guiding principles of <a href="https://www.edwardtufte.com/tufte/books_vdqi" target="_blank">Edward Tufte's book</a>, and to continue in the spirit of Charles Joseph Minard, I feel it necessary to very clearly state where my data came from, how I obtained it, and to explain any visual elements which might be confusing to viewers.
-							This dataset was obtained directly from Amelia Wattenberger's course. It is the daily weather from every day in New York City, in 2018, as distributed from the <a href="https://darksky.net/forecast/40.7127,-74.0059/us12/en" target="_blank">DarkSky.net API</a>. The minimum temperature for each day is plotted on the x-axis, while the maximum temperature for each day is plotted
-							on the y-axis. While one might expect a relatively straight line to emerge (which is indeed what we see), denoting that temperatures remain in a relatively narrow range in any given 24 hour period, there are some interesting outliers in the dataset. 
-						</p>
-						<p>The color of each dot represents a date of year; lighter colors are nearer to January 1, 2018, while darker colors 
-							are nearer to December 31, 2018. A more intuitive color scale might be "circular"; that is, start and end with the same light color, with a dark color to represent the hot months (May-August or so), since January 1 and December 31 are very near to each other in reality, but appear very different in the chart. In future days of charts, I will expand upon this first chart and make 
-							it more intuitive and engaging to explore.</p>
 
 					</div>
 
