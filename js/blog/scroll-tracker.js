@@ -10,15 +10,15 @@ async function drawLines() {
 
   var margin = { top: 20, right: 20, bottom: 20, left: 40 };
 
-  var width = 960;
-  var height = 500;
+  var width = 300;
+  var height = 300;
 
   var svg = d3
-  	.select("#chart")
+  	.select("#scroll-tracker")
   	.append("svg")
   	.attr("preserveAspectRatio", "xMinYMin meet")
-  	.attr("viewBox", "-20 -20 1000 750")
-  	.style("padding", 5)
+  	.attr("viewBox", [0, 0, width, height])
+  	.style("padding", 20)
   	.style("margin", 5);
 
   var g = svg
