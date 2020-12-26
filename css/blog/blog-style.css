@@ -1,8 +1,6 @@
-@import url("https://use.typekit.net/spy0qpi.css");
-
 p {
-    font-family: adobe-caslon-pro, serif;
+    font-family: 'merriweather', serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1.6em;
+    font-size: 1.2em;
 }
