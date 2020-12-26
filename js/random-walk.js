@@ -1,10 +1,10 @@
 var width = 600,
-    height = 300,
-    step_size = 5;
+    height = 600,
+    step_size = 10;
 
 var svg = d3.select("#random-walk")
             .append("svg")
-            .attr("width", width)
+            .style("width", width)
             .attr("height", height);
 
 // const chartTitle = g =>
@@ -48,3 +48,5 @@ d3.timer(function() {
     add_line(pos, next_pos, d3.hsl((counter = (counter + 1) % 1000), 1, .5));
     pos = next_pos;
 })
+
+document.getElementById("random-walk").setAttribute("align", "center");
