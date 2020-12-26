@@ -4,8 +4,7 @@ var width = 600,
 
 var svg = d3.select("#random-walk")
             .append("svg")
-            .style("width", width)
-            .attr("height", height);
+            .attr("viewBox", [0, 0, width, height])
 
 // const chartTitle = g =>
 // g
