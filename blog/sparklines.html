@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77949830-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag()
+		{
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-77949830-4');
+	</script>
+
+	<!-- Basic -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Niko | Sparklines</title>
+	<meta name="description" content="Sparklines Made with D3.js">
+	<meta name="keywords" content="D3.js, dataviz, visualization, data, graphics, interactive, sparklines">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Load Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic' rel='stylesheet'>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../css/glitche-basic.css" />
+	<link rel="stylesheet" href="../css/glitche-layout.css" />
+	<link rel="stylesheet" href="../css/ionicons.css" />
+	<link rel="stylesheet" href="../css/magnific-popup.css" />
+	<link rel="stylesheet" href="../css/animate.css" />
+	<link rel="stylesheet" href="../css/highlight/badge-style.css">
+	<link rel="stylesheet" href="../css/blog/blog-style.css">
+
+	<!-- Highlight.js -->
+	<link rel="stylesheet" href="../css/highlight/tomorrow-night.css">
+	<script src="../js/highlight.pack.js"></script>
+	<script src="../js/highlightjs-badge.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+
+	<!-- Font -->
+	<link rel="stylesheet" href="https://use.typekit.net/spy0qpi.css">
+
+	<!-- CSS for Specific Blog -->
+	<link rel="stylesheet" href="../css/blog/sparklines.css" />
+
+	<!--
+		Template Colors
+	-->
+	<link rel="stylesheet" href="../css/template-colors/blue.css" />
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="../images/favicons/favicon.ico">
+
+</head>
+
+<body>
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="centrize full-width">
+			<div class="vertical-center">
+				<div class="pre-inner">
+					<div class="load typing-load">
+						<p>loading...</p>
+					</div>
+					<span class="typed-load"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Header -->
+		<header>
+			<div class="head-top">
+				<a href="#" class="menu-btn"><span></span></a>
+				<div class="top-menu">
+					<ul>
+						<li><a href="../index.html" class="lnk">Home</a></li>
+						<li><a href="../portfolio.html" class="lnk">Portfolio</a></li>
+						<li class="active"><a href="../blog.html" class="lnk">Data Blog</a></li>
+						<li><a href="../newsletters.html" class="lnk">Newsletters</a></li>
+						<li><a href="../contact.html" class="btn">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Started -->
+			<div class="section started">
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<div class="date">27 December 2020</div>
+							<div class="h-title blog_title">Sparklines with D3.js</div>
+							<div class="h-subtitle typing-bread">
+								<p><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a></p>
+							</div>
+							<span class="typed-bread"></span>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="mouse_btn"><span class="ion ion-mouse"></span></a>
+			</div>
+
+			<!-- Blog -->
+			<div class="section blog">
+				<div class="content">
+					<div class="single-post-text">
+						
+						<p>I still remember picking up Edward Tufte's book, "The Visual Display of Quantitative Information", for the first time. Its pages oversized and crisp, I flipped through and studied each chart in meticulous detail. Sure, Tufte's appeal to minimal "paint", clean lines and clear labels was a rewarding educational experience.
+							But I also enjoyed some of the <i>stranger</i> charts that were mentioned in that book; most notably, sparklines. </p>
+
+						<p>Sparklines are a simple idea (in hindsight) but they felt revolutionary to me at the time. They are just miniature charts, embedded in the text of a paragraph. If a journalist were to write about a stock, say, and had limited space in her words, she could throw in a sparkline to show AAPL's stock over time, and only occupy about 1/4 of a line of text.</p>
+
+						<p>The purpose of this blog is simple: Make a few sparklines, and embed them in the words on this page. For this post, I learned about Sparklines, implemented with D3.js, from <a href="https://www.essycode.com/posts/create-sparkline-charts-d3/" target="_blank">this article</a>. 
+						However, their code demonstrating how to create sparklines is a bit outdated, so I've updated all of it for this post, and I will walk through the code for each type of sparkline. If this sounds interesting to you, read on!</p>
+		
+						<p>Let's start with the simplest sparkline: an inline line chart. This chart <span id="sparklines1"></span> is embedded right in the text, like magic. Beautiful! Notice, too, that this sparkline doesn't push the surrounding lines of text up or down; it's height exactly matches that of the paragraph's spacing. Creating this sparkline is quite simple, if you have the basics of D3.js under your belt. First, within my HTML's "p" tag, I have put a span element with an ID of "sparklines1". (At the bottom of the HTML body, I also import the D3 script!). Then, I need to select and style that span tag with CSS, setting its display property to inline-block. </p>
+
+<pre><code class="css">
+.sparkline {
+	display: inline-block;
+}
+</code></pre>			
+
+						<p>Now, on to the javascript bit. The first thing to do is create an empty async function, which will hold all of our JavaScript code. </p>
+
+<pre><code class="javascript">
+async function sparklines1 () {
+// Code goes here.
+}
+// Call the function!
+sparklines1() 
+</code></pre>
+					<p>After setting up the empty Javascript function, called "sparklines1", we now have to load the data that will actually be used to create our line chart. To do that, I'm just generating 50 random numbers, within the async function.</p>
+
+<pre><code class="javascript">
+const data = d3.range(50).map( d => Math.random() );
+
+// Check out the numbers, if you'd like 
+console.log(data) 
+</code></pre>
+
+					<p>With our data loaded, I then set up the various dimensions of the chart. Pay careful attention to <i>width</i> and <i>height</i> when making your sparkline; height plus any relevant margin parameters should precisely match the line-spacing property of your paragraph elements. On this blog page, the spacing between lines of text is set to 25px by default. Therefore, for the height of my sparklines, I don't want to exceed a height of, say, 20px plus a margin of 5px. Here's how I set up my chart dimensions:</p>
+
+<pre><code class="javascript">
+// Set different variables for the chart's dimensions.
+const width = 150;
+const height = 20;
+const margin = { top: 5, right: 2, bottom: 0, left: 2 };
+const boundedwidth  = width - margin.left - margin.right;
+const boundedheight = height - margin.top - margin.bottom;
+</code></pre>
+
+					<p>Now the data and dimensions are both set up. It is time to set up our d3 scales. This step is a bit tricky if you are unfamiliar with d3.js; but scales map data to pixel values, and are a key element to any chart made with this JavaScript library. Here's how I set up my x and y scales.</p>
+
+<pre><code class="javascript">
+const xScale = d3.scaleLinear().domain([0, data.length]).range([0, boundedwidth]);
+const yScale = d3.scaleLinear().domain([0, d3.max(data)]).range([boundedheight, 0]);
+</code></pre>
+
+					<p>If this is confusing for any reason, note that the documentation on d3 scales is superb. You can read it <a href="https://github.com/d3/d3-scale" target="_blank">here</a>.</p>
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="soc">
+				<a target="_blank" href="https://twitter.com/NikoMcCarty"><span class="ion ion-social-twitter"></span></a>
+				<a target="_blank" href="https://github.com/nikomccarty"><span class="ion ion-social-github"></span></a>
+				<a target="_blank" href="https://observablehq.com/@nikomccarty"><span class="ion ion-code"></span></a>
+				<a target="_blank" href="https://www.linkedin.com/in/nsmccarty/"><span class="ion ion-social-linkedin"></span></a>
+			</div>
+			<div class="copy">© 2020 Niko &#9829;. All rights reserved.</div>
+			<div class="clr"></div>
+		</footer>
+
+	</div>
+
+	<script>
+		setTimeout(function()
+		{
+			var pres = document.querySelectorAll("pre>code");
+			for (var i = 0; i < pres.length; i++)
+			{
+				hljs.highlightBlock(pres[i]);
+			}
+			var options = {
+				contentSelector: ".container",
+				// Delay in ms used for `setTimeout` before badging is applied
+				// Use if you need to time highlighting and badge application
+				// since the badges need to be applied afterwards.
+				// 0 - direct execution (ie. you handle timing
+				loadDelay: 0,
+
+				// CSS class(es) used to render the copy icon.
+				copyIconClass: "fa fa-copy",
+				// CSS class(es) used to render the done icon.
+				checkIconClass: "fa fa-check text-success",
+
+				// hook to allow modifying the text before it's pasted
+				onBeforeTextCopied: function(text, codeElement)
+				{
+					return text; //  you can fix up the text here
+				}
+			};
+			window.highlightJsBadge(options);
+		}, 10);
+	</script>
+
+	<!-- jQuery Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.validate.js"></script>
+	<script src="../js/typed.js"></script>
+	<script src="../js/magnific-popup.js"></script>
+	<script src="../js/imagesloaded.pkgd.js"></script>
+	<script src="../js/isotope.pkgd.js"></script>
+
+	<!-- Main Scripts -->
+	<script src="../js/glitche-scripts.js"></script>
+
+
+
+	<!-- D3 Scripts -->
+	<script src="../js/d3.min.js"></script>
+
+	<!-- Visualization Scripts -->
+	<script src="../js/blog/sparklines.js"></script>
+
+
+</body>
+
+</html>

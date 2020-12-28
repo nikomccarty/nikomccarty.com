@@ -20,7 +20,7 @@ a:link, a:active, a:visited {
 }
 
 a:hover {
-  color: #fff;
+  color: rgb(161, 155, 155);
 }
 
 a.btn.fill,
