@@ -104,7 +104,7 @@
 				<div class="centrize full-width">
 					<div class="vertical-center">
 						<div class="started-content">
-							<div class="date">27 December 2020</div>
+							<div class="date">28 December 2020</div>
 							<div class="h-title blog_title">Sparklines with D3.js</div>
 							<div class="h-subtitle typing-bread">
 								<p><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a></p>
@@ -124,57 +124,17 @@
 						<p>I still remember picking up Edward Tufte's book, "The Visual Display of Quantitative Information", for the first time. Its pages oversized and crisp, I flipped through and studied each chart in meticulous detail. Sure, Tufte's appeal to minimal "paint", clean lines and clear labels was a rewarding educational experience.
 							But I also enjoyed some of the <i>stranger</i> charts that were mentioned in that book; most notably, sparklines. </p>
 
-						<p>Sparklines are a simple idea (in hindsight) but they felt revolutionary to me at the time. They are just miniature charts, embedded in the text of a paragraph. If a journalist were to write about a stock, say, and had limited space in her words, she could throw in a sparkline to show AAPL's stock over time, and only occupy about 1/4 of a line of text.</p>
+						<p>Sparklines are a simple idea (in hindsight) but they felt revolutionary to me at the time. They are just miniature charts, embedded in the text of a paragraph. If a journalist were to write about a stock, say, and had limited space in which to write her words, she could throw in a sparkline to show AAPL's stock over time, and only occupy about 1/4 of a line of text. Sparklines are a way to show information quickly, in a compartmentalized manner, and save text. I suppose that I'm drawn to sparklines because they feel like worthy companions for a journalist who wants to quickly convey a point at a deeper level of detail than the space requirements of a typical newspaper might allow.</p>
 
-						<p>The purpose of this blog is simple: Make a few sparklines, and embed them in the words on this page. For this post, I learned about Sparklines, implemented with D3.js, from <a href="https://www.essycode.com/posts/create-sparkline-charts-d3/" target="_blank">this article</a>. 
-						However, their code demonstrating how to create sparklines is a bit outdated, so I've updated all of it for this post, and I will walk through the code for each type of sparkline. If this sounds interesting to you, read on!</p>
+						<p>The purpose of this blog is simple: Make a few sparklines, and embed them in the words on this page. For this post, I learned about Sparklines from <a href="https://www.essycode.com/posts/create-sparkline-charts-d3/" target="_blank">this article</a>, adapted the code, and reconstructed them with D3.js. 
+						All of the sparklines on this page were built with version 6 of the D3 library, so the code is up-to-date. All of the code that was used to generate this blog post can also be <a href="https://codepen.io/nikomccarty/pen/OJRzxrM" target="_blank">viewed on my CodePen</a>. </p>
 		
-						<p>Let's start with the simplest sparkline: an inline line chart. This chart <span id="sparklines1"></span> is embedded right in the text, like magic. Beautiful! Notice, too, that this sparkline doesn't push the surrounding lines of text up or down; it's height exactly matches that of the paragraph's spacing. Creating this sparkline is quite simple, if you have the basics of D3.js under your belt. First, within my HTML's "p" tag, I have put a span element with an ID of "sparklines1". (At the bottom of the HTML body, I also import the D3 script!). Then, I need to select and style that span tag with CSS, setting its display property to inline-block. </p>
+						<p>Let's start with the simplest sparkline: an inline line chart. This chart <span id="sparklines-line" class="sparklines"></span> is embedded right in the text, like magic. Beautiful! Notice, too, that this sparkline doesn't push the surrounding lines of text up or down; it's height exactly matches that of the paragraph's spacing. I went into the CSS for this blog page, noticed that the line spacing is set to 25px, and so set the height of this sparkline to 20px + 5px margin on the top. The second quirk, to get it to display properly, is to set its display property to inline-block.</p>
+						
+						<p>On to the next one: a simple bar chart. <span id="sparklines-bars" class="sparklines"></span> The approach to make this follows the same logic as the line chart. The only difference, in this case, is that I'm using real data; namely, the frequency with which each letter in the English alphabet is used. You can view a bigger version of this chart on my <a href="https://observablehq.com/@nikomccarty/30-days-of-d3-day-4-bar-chart?collection=@nikomccarty/30-days-of-d3" target="_blank">Observable</a> page.</p>
 
-<pre><code class="css">
-.sparkline {
-	display: inline-block;
-}
-</code></pre>			
-
-						<p>Now, on to the javascript bit. The first thing to do is create an empty async function, which will hold all of our JavaScript code. </p>
-
-<pre><code class="javascript">
-async function sparklines1 () {
-// Code goes here.
-}
-// Call the function!
-sparklines1() 
-</code></pre>
-					<p>After setting up the empty Javascript function, called "sparklines1", we now have to load the data that will actually be used to create our line chart. To do that, I'm just generating 50 random numbers, within the async function.</p>
-
-<pre><code class="javascript">
-const data = d3.range(50).map( d => Math.random() );
-
-// Check out the numbers, if you'd like 
-console.log(data) 
-</code></pre>
-
-					<p>With our data loaded, I then set up the various dimensions of the chart. Pay careful attention to <i>width</i> and <i>height</i> when making your sparkline; height plus any relevant margin parameters should precisely match the line-spacing property of your paragraph elements. On this blog page, the spacing between lines of text is set to 25px by default. Therefore, for the height of my sparklines, I don't want to exceed a height of, say, 20px plus a margin of 5px. Here's how I set up my chart dimensions:</p>
-
-<pre><code class="javascript">
-// Set different variables for the chart's dimensions.
-const width = 150;
-const height = 20;
-const margin = { top: 5, right: 2, bottom: 0, left: 2 };
-const boundedwidth  = width - margin.left - margin.right;
-const boundedheight = height - margin.top - margin.bottom;
-</code></pre>
-
-					<p>Now the data and dimensions are both set up. It is time to set up our d3 scales. This step is a bit tricky if you are unfamiliar with d3.js; but scales map data to pixel values, and are a key element to any chart made with this JavaScript library. Here's how I set up my x and y scales.</p>
-
-<pre><code class="javascript">
-const xScale = d3.scaleLinear().domain([0, data.length]).range([0, boundedwidth]);
-const yScale = d3.scaleLinear().domain([0, d3.max(data)]).range([boundedheight, 0]);
-</code></pre>
-
-					<p>If this is confusing for any reason, note that the documentation on d3 scales is superb. You can read it <a href="https://github.com/d3/d3-scale" target="_blank">here</a>.</p>
-
+						<p>Okay, let's do one more chart; a bar chart, again, but with both positive and negative values. <span id="sparklines-bars2" class="sparklines"></span>You could use this type of chart to show gains or losses of a stock over time, for example. </p>
+						<p>Hope you enjoyed this post!</p>
 					</div>
 
 					<div class="clear"></div>
