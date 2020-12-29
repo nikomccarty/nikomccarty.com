@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77949830-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag()
+		{
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-77949830-4');
+	</script>
+
+	<!-- Basic -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Niko | Game of Life</title>
+	<meta name="description" content="Celebrating John Conway's Game of Life">
+	<meta name="keywords" content="D3.js, dataviz, visualization, data, graphics, interactive, conway, game of life, john conway">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Load Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic' rel='stylesheet'>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../css/glitche-basic.css" />
+	<link rel="stylesheet" href="../css/glitche-layout.css" />
+	<link rel="stylesheet" href="../css/ionicons.css" />
+	<link rel="stylesheet" href="../css/magnific-popup.css" />
+	<link rel="stylesheet" href="../css/animate.css" />
+	<link rel="stylesheet" href="../css/highlight/badge-style.css">
+	<link rel="stylesheet" href="../css/blog/blog-style.css">
+
+	<!-- Highlight.js -->
+	<link rel="stylesheet" href="../css/highlight/tomorrow-night.css">
+	<script src="../js/highlight.pack.js"></script>
+	<script src="../js/highlightjs-badge.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+
+	<!-- Font -->
+	<link rel="stylesheet" href="https://use.typekit.net/spy0qpi.css">
+
+	<!-- CSS for Specific Blog -->
+	<link rel="stylesheet" href="../css/blog/sparklines.css" />
+
+	<!--
+		Template Colors
+	-->
+	<link rel="stylesheet" href="../css/template-colors/blue.css" />
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="../images/favicons/favicon.ico">
+
+	<!-- P5.js Scripts -->
+	<script src="../js/p5.min.js"></script>
+    <script src="../js/p5.dom.min.js"></script>
+	<script src="../js/p5.sound.min.js"></script>
+	
+	<!-- p5 Styles -->
+    <link rel="stylesheet" type="text/css" href="../css/blog/game-of-life.css">
+
+</head>
+
+<body>
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="centrize full-width">
+			<div class="vertical-center">
+				<div class="pre-inner">
+					<div class="load typing-load">
+						<p>loading...</p>
+					</div>
+					<span class="typed-load"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Header -->
+		<header>
+			<div class="head-top">
+				<a href="#" class="menu-btn"><span></span></a>
+				<div class="top-menu">
+					<ul>
+						<li><a href="../index.html" class="lnk">Home</a></li>
+						<li><a href="../portfolio.html" class="lnk">Portfolio</a></li>
+						<li class="active"><a href="../blog.html" class="lnk">Data Blog</a></li>
+						<li><a href="../newsletters.html" class="lnk">Newsletters</a></li>
+						<li><a href="../contact.html" class="btn">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Started -->
+			<div class="section started">
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<div class="date">30 December 2020</div>
+							<div class="h-title blog_title">Celebrating John Conway’s Game of Life</div>
+							<div class="h-subtitle typing-bread">
+								<p><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a></p>
+							</div>
+							<span class="typed-bread"></span>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="mouse_btn"><span class="ion ion-mouse"></span></a>
+			</div>
+
+			<!-- Blog -->
+			<div class="section blog">
+				<div class="content">
+					<div class="single-post-text">
+						
+						<p>I still remember picking up Edward Tufte's book, "The Visual Display of Quantitative Information", for the first time. Its pages oversized and crisp, I flipped through and studied each chart in meticulous detail. Sure, Tufte's appeal to minimal "paint", clean lines and clear labels was a rewarding educational experience.
+							But I also enjoyed some of the <i>stranger</i> charts that were mentioned in that book; most notably, sparklines. </p>
+
+						<div id="canvas">
+							<div id="sketch"></div>
+							<div id="reset-button"></div>
+						</div>
+
+						<!-- cite this https://www.nytimes.com/2020/12/28/science/math-conway-game-of-life.html?campaign_id=34&emc=edit_sc_20201229&instance_id=25475&nl=science-times&regi_id=111972590&segment_id=47960&te=1&user_id=825f6f8740957219afef7c3776fb7930 + add Wikimedia attribution for blog image on that page.-->
+
+						<p>Sparklines are a simple idea (in hindsight) but they felt revolutionary to me at the time. They are just miniature charts, embedded in the text of a paragraph. If a journalist were to write about a stock, say, and had limited space in which to write her words, she could throw in a sparkline to show AAPL's stock over time, and only occupy about 1/4 of a line of text. Sparklines are a way to show information quickly, in a compartmentalized manner, and save text. I suppose that I'm drawn to sparklines because they feel like worthy companions for a journalist who wants to quickly convey a point at a deeper level of detail than the space requirements of a typical newspaper might allow.</p>
+
+						<p>The purpose of this blog is simple: Make a few sparklines, and embed them in the words on this page. For this post, I learned about Sparklines from <a href="https://www.essycode.com/posts/create-sparkline-charts-d3/" target="_blank">this article</a>, adapted the code, and reconstructed them with D3.js. 
+						All of the sparklines on this page were built with version 6 of the D3 library, so the code is up-to-date. All of the code that was used to generate this blog post can also be <a href="https://codepen.io/nikomccarty/pen/OJRzxrM" target="_blank">viewed on my CodePen</a>. </p>
+		
+						<p>Let's start with the simplest sparkline: an inline line chart. This chart <span id="sparklines-line" class="sparklines"></span> is embedded right in the text, like magic. Beautiful! Notice, too, that this sparkline doesn't push the surrounding lines of text up or down; it's height exactly matches that of the paragraph's spacing. I went into the CSS for this blog page, noticed that the line spacing is set to 25px, and so set the height of this sparkline to 20px + 5px margin on the top. The second quirk, to get it to display properly, is to set its display property to inline-block.</p>
+						
+						<p>On to the next one: a simple bar chart. <span id="sparklines-bars" class="sparklines"></span> The approach to make this follows the same logic as the line chart. The only difference, in this case, is that I'm using real data; namely, the frequency with which each letter in the English alphabet is used. You can view a bigger version of this chart on my <a href="https://observablehq.com/@nikomccarty/30-days-of-d3-day-4-bar-chart?collection=@nikomccarty/30-days-of-d3" target="_blank">Observable</a> page.</p>
+
+						<p>Okay, let's do one more chart; a bar chart, again, but with both positive and negative values. <span id="sparklines-bars2" class="sparklines"></span>You could use this type of chart to show gains or losses of a stock over time, for example. </p>
+						<p>Hope you enjoyed this post!</p>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="soc">
+				<a target="_blank" href="https://twitter.com/NikoMcCarty"><span class="ion ion-social-twitter"></span></a>
+				<a target="_blank" href="https://github.com/nikomccarty"><span class="ion ion-social-github"></span></a>
+				<a target="_blank" href="https://observablehq.com/@nikomccarty"><span class="ion ion-code"></span></a>
+				<a target="_blank" href="https://www.linkedin.com/in/nsmccarty/"><span class="ion ion-social-linkedin"></span></a>
+			</div>
+			<div class="copy">© 2020 Niko &#9829;. All rights reserved.</div>
+			<div class="clr"></div>
+		</footer>
+
+	</div>
+
+	<script>
+		setTimeout(function()
+		{
+			var pres = document.querySelectorAll("pre>code");
+			for (var i = 0; i < pres.length; i++)
+			{
+				hljs.highlightBlock(pres[i]);
+			}
+			var options = {
+				contentSelector: ".container",
+				// Delay in ms used for `setTimeout` before badging is applied
+				// Use if you need to time highlighting and badge application
+				// since the badges need to be applied afterwards.
+				// 0 - direct execution (ie. you handle timing
+				loadDelay: 0,
+
+				// CSS class(es) used to render the copy icon.
+				copyIconClass: "fa fa-copy",
+				// CSS class(es) used to render the done icon.
+				checkIconClass: "fa fa-check text-success",
+
+				// hook to allow modifying the text before it's pasted
+				onBeforeTextCopied: function(text, codeElement)
+				{
+					return text; //  you can fix up the text here
+				}
+			};
+			window.highlightJsBadge(options);
+		}, 10);
+	</script>
+
+	<!-- jQuery Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.validate.js"></script>
+	<script src="../js/typed.js"></script>
+	<script src="../js/magnific-popup.js"></script>
+	<script src="../js/imagesloaded.pkgd.js"></script>
+	<script src="../js/isotope.pkgd.js"></script>
+
+	<!-- Main Scripts -->
+	<script src="../js/glitche-scripts.js"></script>
+
+	<!-- D3 Scripts -->
+	<script src="../js/d3.min.js"></script>
+
+	<!-- p5 Sketch -->
+	<script src="../js/blog/game-of-life.js"></script>	
+
+
+</body>
+
+</html>
