@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77949830-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag()
+		{
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-77949830-4');
+	</script>
+
+	<!-- Basic -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Niko | Random Walkers</title>
+	<meta name="description" content="Random Walkers Made with p5.js and vanilla JavaScript">
+	<meta name="keywords" content="D3.js, dataviz, visualization, data, graphics, interactive, random, walk">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Load Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic' rel='stylesheet'>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../css/glitche-basic.css" />
+	<link rel="stylesheet" href="../css/glitche-layout.css" />
+	<link rel="stylesheet" href="../css/ionicons.css" />
+	<link rel="stylesheet" href="../css/magnific-popup.css" />
+	<link rel="stylesheet" href="../css/animate.css" />
+	<link rel="stylesheet" href="../css/highlight/badge-style.css">
+	<link rel="stylesheet" href="../css/blog/blog-style.css">
+
+	<!-- Highlight.js -->
+	<link rel="stylesheet" href="../css/highlight/tomorrow-night.css">
+	<script src="../js/highlight.pack.js"></script>
+	<script src="../js/highlightjs-badge.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+
+	<!-- Font -->
+	<link rel="stylesheet" href="https://use.typekit.net/spy0qpi.css">
+
+	<!-- CSS for Specific Blog -->
+	<link rel="stylesheet" href="../css/blog/random-walkers.css" />
+
+	<!--
+		Template Colors
+	-->
+	<link rel="stylesheet" href="../css/template-colors/blue.css" />
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="../images/favicons/favicon.ico">
+
+	<!-- P5.js Scripts -->
+	<script src="../js/p5.min.js"></script>
+    <script src="../js/p5.dom.min.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="centrize full-width">
+			<div class="vertical-center">
+				<div class="pre-inner">
+					<div class="load typing-load">
+						<p>loading...</p>
+					</div>
+					<span class="typed-load"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Header -->
+		<header>
+			<div class="head-top">
+				<a href="#" class="menu-btn"><span></span></a>
+				<div class="top-menu">
+					<ul>
+						<li><a href="../index.html" class="lnk">Home</a></li>
+						<li><a href="../writing.html" class="lnk">Writing</a></li>
+						<li class="active"><a href="../blog.html" class="lnk">Data Blog</a></li>
+						<li><a href="../newsletters.html" class="lnk">Newsletters</a></li>
+						<li><a href="../contact.html" class="btn">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Started -->
+			<div class="section started">
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<div class="date">30 December 2020</div>
+							<div class="h-title blog_title">Random Walks: D3.js vs. p5.js</div>
+							<div class="h-subtitle typing-bread">
+								<p><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a></p>
+							</div>
+							<span class="typed-bread"></span>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="mouse_btn"><span class="ion ion-mouse"></span></a>
+			</div>
+
+			<!-- Blog -->
+			<div class="section blog">
+				<div class="content">
+					<div class="single-post-text">
+						
+						<p>I wrote my first line of code when I was 25, as a PhD student at Caltech. That was one year ago, and it was all Python. Now, I'm practicing JavaScript every day, because I think it will help me be a better journalist, merging writing with interactive visualizations. 
+							I'm still very much learning, and I used to be ashamed of that. I used to think that, since I was learning, I could not possibly post examples of my work because they wouldn't be good enough. I now feel that's a foolish mindset, and so I've been trying to put everything I do on this website; by tracking my posts over time, I can see the coding progress that I am making.</p>
+						
+						<p>Today, I built a two-dimensional random walker (2D) in two different ways. In the first iteration, I'll use <a href="https://d3js.org/" target="_blank">D3.js</a> and a bit of vanilla JavaScript. Then, I'll show how that code can be reduced considerably by using <a href="https://p5js.org/reference/" target="_blank">p5.js</a>. Join me!</p>
+						
+						<div id="random-walk"></div>
+
+						<p>The random walker above was made with D3.js. The first thing I did was create an asynchronous function, called d3RandomWalk, and then call it. In that function, I set three variables that specify the length of each "step" in the random walker, as well as the width and height of the svg wrapper that holds the animation.</p>
+
+<pre><code class="javascript">
+async function d3RandomWalk() {
+	const width = 400;
+	const height = 400;
+	const step_length = 5;
+}
+
+d3RandomWalk();
+</code></pre>
+
+						<p>Next, I use the D3.js library to select a div element in my HTML, and append an svg to it.</p>
+
+<pre><code class="javascript">
+var svg = d3.select("#random-walk")
+	.append("svg")
+	.attr("viewBox", [0, 0, width, height])
+</code></pre>
+
+						<p>Now we can append the random walker to that svg element, and it will display on the page. To create the actual random walker, there are three functions that are needed: 'direction', 'take_step', and 'add_line'.</p>
+
+<pre><code class="javascript">
+function direction() {
+	return Math.random() > .5 ? 1 : -1;
+}
+
+function take_step(position) {
+	var step = step_length * direction();
+	if (Math.random() > 0.5)
+		return {"x" : position.x + step, "y" : position.y};
+	return {"x" : position.x, "y" : position.y + step};
+}
+
+function add_line(position, next_position) {
+	svg.append("line")
+		.attr("x1", position.x)
+		.attr("y1", position.y)
+		.attr("x2", next_position.x)
+		.attr("y2", next_position.y)
+		.attr("stroke", "black")
+		.attr("stroke-width", 2);
+	}
+</code></pre>
+
+						<p>The first function, 'direction', uses JavaScript's Math.random() function, coupled to a switch statement, to return a +1 or -1 digit. 
+							The next function, 'take_step', then uses that +1 or -1, in addition to <em>another Math.random()</em> statement, to "decide" where to step next; left, right, up, or down. Finally, the 'add_line' function uses D3.js to draw the physical, black line that renders on the SVG. I've set the stroke to black, and the stroke-width to 2, but you could easily make these lines appear in a myriad of colors.
+						</p>
+
+						<p>In the final bit of code, I set up a timer function that stops the random walker after 30 seconds. It uses the functionality of <a href="https://github.com/d3/d3-timer#timer_stop" target="_blank">d3.timer()</a>.</p>
+
+<pre><code class="javascript">
+let pos = {"x" : width/2, "y" : height/2};
+let next_pos;
+
+var timePassed = d3.timer(function(elapsed) {
+	next_pos = take_step(pos);
+	add_line(pos, next_pos);
+	pos = next_pos;
+	if (elapsed > 30000) timePassed.stop();
+})
+</code></pre>
+
+						<p>And that's it! That's a simple way to make a two-dimensional random walker using JavaScript. Next, let's see how all that code can be condensed into ~40 lines of code, using the p5.js library.</p>
+
+						<div id="p5-canvas"></div>
+
+						<p>The code to create the random walker with p5.js (shown above) is pretty simple. First, define necessary variables for the line (which takes four arguments, initial x and y coordinates, as well as "future" x and y coordinates). I used p5's built-in "random" function to decide which direction to step, and then drew lines for each iteration through the loop. 
+							The reason that this code works, and runs repeatedly without any loops, is because the "draw" function in p5.js automatically runs on repeat, while the setup function runs just once. That makes p5.js really versatile and fun to play with to create moving, interactive sketches. You can even set the frame rate of the draw() function to change the speed of each loop.</p>
+
+<pre><code class="javascript">
+async function p5RandomWalk() {
+	let sketch = function(p) {
+		let x;
+		let y;
+		let x_next;
+		let y_next;
+		
+		p.setup = function(){
+		p.createCanvas(400, 400);
+		p.background(255);
+		x = p.width / 2;
+		y = p.height / 2;
+		}
+
+		p.draw = function(){
+		const step = p.floor(p.random(4));
+		switch (step) {
+			case 0:
+			x_next = x + 5;
+			y_next = y;
+			break;
+			case 1:
+			x_next = x - 5;
+			y_next = y;
+			break;
+			case 2:
+			y_next = y + 5;
+			x_next = x;
+			break;
+			case 3:
+			y_next = y - 5;
+			x_next = x;
+			break;
+		}
+		p.stroke(0);
+		p.strokeWeight(3);
+		p.line(x, y, x_next, y_next);
+		x = x_next;
+		y = y_next;
+			}
+	};
+	new p5(sketch, 'p5-canvas');
+	}
+	
+	p5RandomWalk()
+</code></pre>
+	
+						<p>In the future, I'd like to make a 3D random walker with Three.js, like <a href="https://codepen.io/DonKarlssonSan/pen/PeOxLX" target="_blank">this example</a>.</p>
+						
+						<p>Thanks for reading!</p>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="soc">
+				<a target="_blank" href="https://twitter.com/NikoMcCarty"><span class="ion ion-social-twitter"></span></a>
+				<a target="_blank" href="https://github.com/nikomccarty"><span class="ion ion-social-github"></span></a>
+				<a target="_blank" href="https://observablehq.com/@nikomccarty"><span class="ion ion-code"></span></a>
+				<a target="_blank" href="https://www.linkedin.com/in/nsmccarty/"><span class="ion ion-social-linkedin"></span></a>
+			</div>
+			<div class="copy">© 2020 Niko &#9829;. All rights reserved.</div>
+			<div class="clr"></div>
+		</footer>
+
+	</div>
+
+	<script>
+		setTimeout(function()
+		{
+			var pres = document.querySelectorAll("pre>code");
+			for (var i = 0; i < pres.length; i++)
+			{
+				hljs.highlightBlock(pres[i]);
+			}
+			var options = {
+				contentSelector: ".container",
+				// Delay in ms used for `setTimeout` before badging is applied
+				// Use if you need to time highlighting and badge application
+				// since the badges need to be applied afterwards.
+				// 0 - direct execution (ie. you handle timing
+				loadDelay: 0,
+
+				// CSS class(es) used to render the copy icon.
+				copyIconClass: "fa fa-copy",
+				// CSS class(es) used to render the done icon.
+				checkIconClass: "fa fa-check text-success",
+
+				// hook to allow modifying the text before it's pasted
+				onBeforeTextCopied: function(text, codeElement)
+				{
+					return text; //  you can fix up the text here
+				}
+			};
+			window.highlightJsBadge(options);
+		}, 10);
+	</script>
+
+	<!-- jQuery Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.validate.js"></script>
+	<script src="../js/typed.js"></script>
+	<script src="../js/magnific-popup.js"></script>
+	<script src="../js/imagesloaded.pkgd.js"></script>
+	<script src="../js/isotope.pkgd.js"></script>
+
+	<!-- Main Scripts -->
+	<script src="../js/glitche-scripts.js"></script>
+
+	<!-- D3 Scripts -->
+	<script src="../js/d3.min.js"></script>
+
+	<!-- p5 Sketch -->
+	<script src="../js/blog/random-walkers.js"></script>	
+
+
+</body>
+
+</html>

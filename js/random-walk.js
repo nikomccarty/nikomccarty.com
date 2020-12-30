@@ -1,6 +1,6 @@
-var width = 600,
-    height = 600,
-    step_size = 10;
+var width = 400,
+    height = 400,
+    step_size = 5;
 
 var svg = d3.select("#random-walk")
             .append("svg")
@@ -35,7 +35,7 @@ function add_line(position, next_position, colour) {
         .attr("x2", next_position.x)
         .attr("y2", next_position.y)
         .attr("stroke", colour)
-        .attr("stroke-width", 4);
+        .attr("stroke-width", 1);
 }
 
 var pos = {"x" : width/2, "y" : height/2};
@@ -44,7 +44,7 @@ var counter = 0;
 
 d3.timer(function() {
     next_pos = take_step(pos);
-    add_line(pos, next_pos, d3.hsl((counter = (counter + 1) % 1000), 1, .5));
+    add_line(pos, next_pos, "white");
     pos = next_pos;
 })
 
