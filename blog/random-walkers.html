@@ -217,36 +217,37 @@ async function p5RandomWalk() {
 		}
 
 		p.draw = function(){
-		const step = p.floor(p.random(4));
-		switch (step) {
+			const step = p.floor(p.random(4));
+			switch (step) {
 			case 0:
-			x_next = x + 5;
-			y_next = y;
-			break;
+				x_next = x + 5;
+				y_next = y;
+				break;
 			case 1:
-			x_next = x - 5;
-			y_next = y;
-			break;
+				x_next = x - 5;
+				y_next = y;
+				break;
 			case 2:
-			y_next = y + 5;
-			x_next = x;
-			break;
+				y_next = y + 5;
+				x_next = x;
+				break;
 			case 3:
-			y_next = y - 5;
-			x_next = x;
-			break;
+				y_next = y - 5;
+				x_next = x;
+				break;
 		}
+
 		p.stroke(0);
 		p.strokeWeight(3);
 		p.line(x, y, x_next, y_next);
 		x = x_next;
 		y = y_next;
-			}
+		}
 	};
 	new p5(sketch, 'p5-canvas');
-	}
+}
 	
-	p5RandomWalk()
+p5RandomWalk()
 </code></pre>
 	
 						<p>In the future, I'd like to make a 3D random walker with Three.js, like <a href="https://codepen.io/DonKarlssonSan/pen/PeOxLX" target="_blank">this example</a>.</p>
